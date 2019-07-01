@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // LOOPING over the list parameter which serves to display any list item
       // with an INDEX that is GREATER THAN OR EQUAL to the start index variable and LESS THAN the end index variable...
       for (var i = 0; i < students.length; i++) {
-         if (i >= start || i < end) {
+         if (i <= start || i > end) {
             students[i].style.display = "none";
          } else {
             students[i].style.display = "";
@@ -51,7 +51,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
    }
 
-   show10Students(studentList, "");
+   show10Students(studentList);
    // sanity check
    console.log('All The DOM Content has load and you\'re ready to go!');
 }); //conclusion of DOMContentLoaded function
