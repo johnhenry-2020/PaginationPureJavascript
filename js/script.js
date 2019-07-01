@@ -18,13 +18,13 @@ event listener not only here but in all the program's I'm solely responsible for
 window.addEventListener('DOMContentLoaded', (event) => {
 
    /*================
-   global variables
+   declaration of global variables
    ================*/
 
    // "studentList" + "student" variables store the student list item elements in the student list...
-   const studentList = document.querySelector('.student-list');
+   const entireStudentList = document.querySelector('.student-list');
    // variable stores the number of items to show on each “page”, which for this program, is 10...
-   const students = document.querySelectorAll(".student-item");
+   const eachStudentItem = document.querySelectorAll(".student-item");
    // "itemsPerpage" variable stores the desired items to be shown on each page...
    const itemsPerPage = 10;
 
@@ -33,25 +33,41 @@ window.addEventListener('DOMContentLoaded', (event) => {
    ================================*/
 
    // "show10Students" function serves to show up to 10 of the students we want displayed on a given page...
-   // "list" parameter is the list of students that you’ll pass in...
-   // "page" parameter represents the page number...
+   // "list" parameter is the list of students that you’ll pass in which is a global variable...
+   // "page" parameter represents the page number, be mindful that the page parameter's data type is an integer/number
    const show10Students = (list, page) => {
       // Start Index of the list items  = (page parameter * items per page) - items per page
       let start = (page * itemsPerPage) - itemsPerPage;
       // End Index of the list items = page parameter * items per page
       let end = page * itemsPerPage;
       // LOOPING over the list parameter which serves to display any list item
-      // with an INDEX that is GREATER THAN OR EQUAL to the start index variable and LESS THAN the end index variable...
-      for (var i = 0; i < students.length; i++) {
+      // with an INDEX that is LESS THAN OR EQUAL to the start index variable and GREATER THAN the end index variable...
+      for (var i = 0; i < eachStudentItem.length; i++) {
          if (i <= start || i > end) {
-            students[i].style.display = "none";
+            eachStudentItem[i].style.display = "none";
          } else {
-            students[i].style.display = "";
+            eachStudentItem[i].style.display = "";
          }
       }
    }
 
-   show10Students(studentList);
-   // sanity check
-   console.log('All The DOM Content has load and you\'re ready to go!');
-}); //conclusion of DOMContentLoaded function
+   /*================================
+   logic for pagination link(s)...
+   ================================*/
+   // function creates and appends functioning pagination links...
+   // accepts a single list parameter to represent the actual list of students passed in as an argument...
+   const createPagLinks = (list) => {
+      const paginationDiv = document.createElement('div');
+      // https://teamtreehouse.com/community/difference-between-classlist-and-classname
+      paginationDiv.classList.add("pagination");
+      //look to append the pagination div to the parentNode?
+   }
+
+
+   // CALLING show10Students FUNCTION...
+   show10Students(entireStudentList, 1);
+   createPagLinks(entireStudentList);
+
+
+   console.log('All The DOM Content has load and you\'re ready to go!'); // <--- sanity check
+}); // <---- conclusion of DOMContentLoaded function
