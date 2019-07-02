@@ -1,5 +1,11 @@
+/* NOTE: There are additional style sheets at play so be
+sure to reference them during development and when refactoring */
+
+html {
+  background-image: linear-gradient(to bottom right, #5fcf80, #fff);
+}
+
 body{
-  background-color: #e1f1f6;
   font-family: Helvetica, sans-serif;
   color: #222;
 }
@@ -96,8 +102,8 @@ body{
   }
 
 .pagination{
-  margin: 40px 0 0 0;
-  text-align: center;
+  position: relative;
+  margin-top: 40px;
 }
 
   .pagination li{

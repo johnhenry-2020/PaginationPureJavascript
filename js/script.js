@@ -43,7 +43,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // LOOPING over the list parameter which serves to display any list item
       // with an INDEX that is LESS THAN OR EQUAL to the start index variable and GREATER THAN the end index variable...
       for (var i = 0; i < eachStudentItem.length; i++) {
-         if (i <= start || i > end) {
+         if (i < start || i >= end) {
             eachStudentItem[i].style.display = "none";
          } else {
             eachStudentItem[i].style.display = "";
@@ -62,10 +62,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
    // You can divide list.length by the max number of items per page to figure out how many pages are needed,
    // and you can use a loop that iterates that many times to create the correct number of LI elements.
    const maxNumPages = Math.ceil(eachStudentItem.length / itemsPerPage);
+   const paginationDiv = document.createElement('div');
+   paginationDiv.style.display = 'flex';
+   paginationDiv.style.textAlign = 'center';
+   paginationDiv.style.margin = '0, auto';
 
    const createPagLinks = (list) => {
       for (var i = 0; i < maxNumPages; i++) {
-         const paginationDiv = document.createElement('div');
          // https://teamtreehouse.com/community/difference-between-classlist-and-classname
          paginationDiv.classList.add("pagination");
          entireStudentList.appendChild(paginationDiv);
@@ -74,17 +77,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
          const li = document.createElement('li');
          ul.appendChild(li);
          const link = document.createElement('a');
-         li.setAttribute('classList', "active");
+         li.setAttribute("className", "active");
          li.appendChild(link);
          link.setAttribute("href", "#");
          // https://stackoverflow.com/questions/3496280/set-text-of-anchor-tag-in-javascript
          link.innerHTML = i + 1;
          link.addEventListener('click', () => {
-            let pagLinks = document.getElementsByTagName('a');
+            let pagLinks = document.querySelector('a');
             for (let i = 0; i < maxNumPages.length; i++) {
-               pagLinks[i].classList = "";
+               pagLinks[i].className = "";
             }
-            event.target.classList = "active";
+            event.target.className = "active";
             show10Students(entireStudentList, link.innerHTML);
          });
       }
