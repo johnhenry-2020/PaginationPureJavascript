@@ -56,11 +56,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
    ================================*/
    // function creates and appends functioning pagination links...
    // accepts a single list parameter to represent the actual list of students passed in as an argument...
+
+
+
+   // You can divide list.length by the max number of items per page to figure out how many pages are needed,
+   // and you can use a loop that iterates that many times to create the correct number of LI elements.
+   const maxNumPages = (eachStudentItem.length / itemsPerPage);
+   // console.log(entireStudentList.length);
+   console.log(`The max number of pages will be ${maxNumPages}.`)
+
    const createPagLinks = (list) => {
       const paginationDiv = document.createElement('div');
       // https://teamtreehouse.com/community/difference-between-classlist-and-classname
       paginationDiv.classList.add("pagination");
       //look to append the pagination div to the parentNode?
+      // const document.querySelector("body > div > ul");
+      entireStudentList.appendChild(paginationDiv);
+      const ul = document.createElement('ul');
+      paginationDiv.appendChild(ul);
+      const li = document.createElement('li');
+      ul.appendChild(li);
+      const link = document.createElement('a');
+      li.setAttribute('classList', "active");
+      li.appendChild(link);
+      link.setAttribute("href", "http://www.teamtreehouse.com/");
+      https://stackoverflow.com/questions/3496280/set-text-of-anchor-tag-in-javascript
+      for (let i = 0; i < maxNumPages.length; i++) {
+         link.innerHTML = i++;
+      }
    }
 
 
