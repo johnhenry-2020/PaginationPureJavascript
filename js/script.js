@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
    // "studentList" + "student" variables store the student list item elements in the student list...
    const entireStudentList = document.querySelector('.student-list');
-   // variable stores the number of items to show on each “page”, which for this program, is 10...
+   // "eachStudentItem" variable stores the number of items to show on each “page”, which for this program, is 10...
    const eachStudentItem = document.querySelectorAll(".student-item");
    // "itemsPerpage" variable stores the desired items to be shown on each page...
    const itemsPerPage = 10;
@@ -61,28 +61,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
    // You can divide list.length by the max number of items per page to figure out how many pages are needed,
    // and you can use a loop that iterates that many times to create the correct number of LI elements.
-   const maxNumPages = (eachStudentItem.length / itemsPerPage);
-   // console.log(entireStudentList.length);
-   console.log(`The max number of pages will be ${maxNumPages}.`)
+   const maxNumPages = Math.ceil(eachStudentItem.length / itemsPerPage);
 
    const createPagLinks = (list) => {
-      const paginationDiv = document.createElement('div');
-      // https://teamtreehouse.com/community/difference-between-classlist-and-classname
-      paginationDiv.classList.add("pagination");
-      //look to append the pagination div to the parentNode?
-      // const document.querySelector("body > div > ul");
-      entireStudentList.appendChild(paginationDiv);
-      const ul = document.createElement('ul');
-      paginationDiv.appendChild(ul);
-      const li = document.createElement('li');
-      ul.appendChild(li);
-      const link = document.createElement('a');
-      li.setAttribute('classList', "active");
-      li.appendChild(link);
-      link.setAttribute("href", "http://www.teamtreehouse.com/");
-      https://stackoverflow.com/questions/3496280/set-text-of-anchor-tag-in-javascript
-      for (let i = 0; i < maxNumPages.length; i++) {
-         link.innerHTML = i++;
+      for (var i = 0; i < maxNumPages; i++) {
+         const paginationDiv = document.createElement('div');
+         // https://teamtreehouse.com/community/difference-between-classlist-and-classname
+         paginationDiv.classList.add("pagination");
+         entireStudentList.appendChild(paginationDiv);
+         const ul = document.createElement('ul');
+         paginationDiv.appendChild(ul);
+         const li = document.createElement('li');
+         ul.appendChild(li);
+         const link = document.createElement('a');
+         li.setAttribute('classList', "active");
+         li.appendChild(link);
+         link.setAttribute("href", "#");
+         // https://stackoverflow.com/questions/3496280/set-text-of-anchor-tag-in-javascript
+         link.innerHTML = i + 1;
+         link.addEventListener('click', () => {
+            let pagLinks = document.getElementsByTagName('a');
+            for (let i = 0; i < maxNumPages.length; i++) {
+               pagLinks[i].classList = "";
+            }
+            event.target.classList = "active";
+            show10Students(entireStudentList, link.innerHTML);
+         });
       }
    }
 
