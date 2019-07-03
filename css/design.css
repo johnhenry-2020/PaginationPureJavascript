@@ -2,31 +2,103 @@
 sure to reference them during development and when refactoring */
 
 html {
-  background-image: linear-gradient(to bottom right, #5fcf80, #fff);
+  margin: 0;
+  /* background-image: linear-gradient(to bottom right, #5fcf80, #fff); */
+  background-color: black;
 }
+
 
 body{
   font-family: Helvetica, sans-serif;
   color: #222;
 }
 
+.top {
+  transform: rotate(180deg);
+}
+
+/* cf = cross fading background */
+#cf {
+  /* height: 100vh; */
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  margin:0 auto;
+  z-index: -1;
+}
+
+#cf img {
+  height: 140%;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  width: 100%;
+}
+
+@keyframes cfFadeInOut {
+  0% {
+  opacity:1;
+}
+35% {
+opacity:.7;
+}
+45% {
+opacity:.5;
+}
+55% {
+opacity:.3;
+}
+65% {
+opacity:.2;
+}
+75% {
+opacity:.1;
+}
+100% {
+opacity:0;
+}
+}
+
+#cf img.top {
+animation-name: cfFadeInOut;
+animation-timing-function: ease-in-out;
+animation-iteration-count: infinite;
+animation-duration: 7s;
+animation-direction: alternate;
+}
+
+
 .page{
   margin: 50px auto;
   width: 70%;
-  background-color: #fff;
+  background-color: rgba(36, 43, 37, 0.4);
   border-radius: 5px;
   padding: 50px;
 }
 
 .page-header{
-  margin-bottom: 20px;
+  margin: 0 auto 70px auto;
+  width: 50vh;
 }
   .page-header h2{
-    float: left;
+    color: #fff;
     font-size: 22px;
-    text-transform: uppercase;
     font-weight: bold;
-    color: #555;
+    margin: 4vh 0 0 0;
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .page-header img{
+    height: 7vh;
+    left: 40%;
+    margin-top: -4.5%;
+    position: absolute;
+    position: fixed;
   }
 
   .page-header .student-search{
@@ -55,6 +127,14 @@ body{
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
     border-bottom: 1px solid #eaeaea;
+    position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+  }
+
+  .student-item:hover{
+    background-color: rgba(243, 243, 243, 0.3);
+    top: -10px;
   }
 
     .student-details{
@@ -73,11 +153,11 @@ body{
       .student-details h3{
         margin: 4px 0 2px 0;
         font-weight: bold;
-        color: #4ba6c3;
+        color: #000;
       }
 
       .student-details .email{
-        color: #888;
+        color: rgb(255, 255, 255);
         font-size: 14px;
       }
 
@@ -92,7 +172,7 @@ body{
         margin-top: 15px;
         display: block;
         font-size: 14px;
-        color: #999;
+        color: #fff;
       }
 
   .student-item:last-child{
@@ -103,7 +183,7 @@ body{
 
 .pagination{
   position: relative;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
   .pagination li{
@@ -115,11 +195,11 @@ body{
       border-radius: 5px;
       padding: 3px 8px;
       text-decoration: none;
-      color: #4ba6c3;
+      color: #fff;
     }
 
     .pagination li a.active,
     .pagination li a:hover{
-      background-color: #4ba6c3;
+      background-color: gray;
       color: #fff;
     }

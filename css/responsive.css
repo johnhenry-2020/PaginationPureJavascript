@@ -1,15 +1,35 @@
 
     /* MOBILE RESPONSIVE RULES */
 
-    /*===========
+
+/* ========================================== */
+/* header image - treehouse center logo */
+/* ========================================== */
+
+
+@media screen and (max-width: 900px) and (min-width: 631px) {
+  .page-header img {
+    height: 4vh;
+  }
+}
+
+/* On screens with a maximum width of 900px, sets the pagination div to center of page */
+@media screen and (max-width: 630px){
+  .page-header img {
+    display: none;
+  }
+}
+
+
+    /*================================================================================
     .pagination - pagination div (houses all pagination buttons/links @ base of page)
-    ===========*/
+    ================================================================================*/
 
 
     /* On screens that are 350px and 300px, sets the pagination div to center of page */
 @media screen and (max-width: 350px) and (min-width: 300px){
   .pagination {
-    position: relative;
+    position: absolute;
     left: 15%;
   }
 }
@@ -17,7 +37,7 @@
 /* On screens that are between 400px and 351px, sets the pagination div to center of page */
 @media screen and (max-width: 400px) and (min-width: 351px) {
   .pagination {
-    position: relative;
+    position: absolute;
     left: 24%;
   }
 }
@@ -26,7 +46,7 @@
 /* On screens that are between 450px and 401px, sets the pagination div to center of page */
 @media screen and (max-width: 450px) and (min-width: 401px) {
   .pagination {
-    position: relative;
+    position: absolute;
     left: 27%;
   }
 }
@@ -34,38 +54,38 @@
 /* On screens that are between 615px and 401px, sets the pagination div to center of page */
 @media screen and (max-width: 615px) and (min-width: 401px) {
   .pagination {
-    position: relative;
-    left: 30%;
+    position: absolute;
+    left: 36%;
   }
 }
 
 /* On screens that are between 790px and 616px, sets the pagination div to center of page */
 @media screen and (max-width: 790px) and (min-width: 616px) {
   .pagination {
-    position: relative;
-    left: 35%;
+    position: absolute;
+    left: 38%;
   }
 }
 
 /* On screens that are between 1035px and 791px, sets the pagination div to center of page */
 @media screen and (max-width: 1035px) and (min-width: 791px) {
   .pagination {
-    position: relative;
-    left: 37%;
+    position: absolute;
+    left: 42%;
   }
 }
 
 /* On screens that are between 1200px and 1036px, sets the pagination div to center of page */
 @media screen and (max-width: 1200px) and (min-width: 1036px) {
   .pagination {
-    position: relative;
+    position: absolute;
     left: 39.5%;
   }
 }
 /* On screens with a minimum width of 1037px, sets the pagination div to center of page */
 @media screen and (min-width: 1037px) {
   .pagination {
-    position: relative;
-    left: 41%;
+    position: absolute;
+    left: 43%;
   }
 }

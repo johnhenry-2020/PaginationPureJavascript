@@ -99,5 +99,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
    createPagLinks(entireStudentList);
 
 
+   /*================================
+      treehouse logo node...
+      ================================*/
+   // https://stackoverflow.com/questions/7932759/dom-appendchild-to-insert-images
+   //"header" variable provides access to h2 - STUDENTS header
+   // const page = document.querySelector(".page");
+   const header = document.querySelector("h2");
+   const logoImg = document.createElement('img');
+   logoImg.src = "static/treehouse-logo-landscape.png";
+   const logo = header.appendChild(logoImg, header);
+
    console.log('All The DOM Content has load and you\'re ready to go!'); // <--- sanity check
 }); // <---- conclusion of DOMContentLoaded function
