@@ -1,6 +1,18 @@
 /* NOTE: There are additional style sheets at play so be
 sure to reference them during development and when refactoring */
 
+/* =============== */
+/* Imported Fonts */
+/* ============== */
+
+/* https://fonts.google.com */
+
+/* M PLUS Rounded 1c */
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:500&display=swap');
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400&display=swap');
+
+
 html {
   margin: 0;
   /* background-image: linear-gradient(to bottom right, #5fcf80, #fff); */
@@ -11,15 +23,15 @@ html {
 body{
   font-family: Helvetica, sans-serif;
   color: #222;
+  height: 100%;
 }
 
 .top {
   transform: rotate(180deg);
 }
 
-/* cf = cross fading background */
+/* cf = cross fading... which is what im labeling what im doing to the background */
 #cf {
-  /* height: 100vh; */
   position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   margin:0 auto;
@@ -27,7 +39,6 @@ body{
 }
 
 #cf img {
-  height: 140%;
   margin: 0 auto;
   position: absolute;
   left: 0;
@@ -66,7 +77,7 @@ opacity:0;
 animation-name: cfFadeInOut;
 animation-timing-function: ease-in-out;
 animation-iteration-count: infinite;
-animation-duration: 7s;
+animation-duration: 3.5s;
 animation-direction: alternate;
 }
 
@@ -85,55 +96,138 @@ animation-direction: alternate;
 }
   .page-header h2{
     color: #fff;
-    font-size: 22px;
+    cursor: pointer;
+    font-size: 5vh;
+    width: 100vh;
+    /* min-width: 100vh; */
+    max-width: 100vh;
     font-weight: bold;
-    margin: 4vh 0 0 0;
-    position: fixed;
+    /* margin: 4vh 0 0 0; */
+    display: block;
+    margin-left: -50%;
+    /* margin-left: 50%; */
+    /* margin-right: 50%; */
     text-align: center;
-    text-transform: uppercase;
+    text-shadow: 2px 2px darkgray;
+    /* text-transform: uppercase; */
   }
 
-  .page-header img{
-    height: 7vh;
-    left: 40%;
-    margin-top: -4.5%;
-    position: absolute;
-    position: fixed;
+  .logo {
+    cursor: pointer;
+    height: 12vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3vh;
   }
 
-  .page-header .student-search{
-    float: right;
+.search-icon{
+  margin-top:4vh;
+  height: 6vh;
+  /* margin-left: 40px; */
+  /* transform: scaleX(-1); */
+}
+
+.search-icon.active {
+  display: none;
+  transition: linear 1s;
+}
+
+form {
+  display: flex;
+}
+
+
+.error-message, .noResults{
+  min-width: 280px;
+  text-align: center;
+  color: rgb(158, 3, 3);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  top: -5vh;
+}
+
+.requestName{
+  color: rgb(158, 3, 3);
+  opacity: 0;
+  /* transition: opacity 2s ease-in; */
+}
+
+
+.removed-message {
+  display: none;
+}
+
+
+#search {
+  /* display: flex; */
+  align-items: center;
+  /* float: right; */
+  font-size: 15px;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  margin: 0 auto;
+  /* margin-bottom: 2vh; */
+  position: relative;
+  transition: 0.3s;
+  width: 40px;
   }
 
-    .page-header .student-search input{
-      border-radius: 5px;
-      border: 1px solid #eaeaea;
-      padding: 8px 15px;
-      font-size: 14px;
-    }
+  #search:hover {
+    cursor: pointer;
+  }
 
-    .page-header .student-search button{
-      border-radius: 5px;
-      border: 1px solid #eaeaea;
-      padding: 8px 15px;
-      font-size: 14px;
-      background-color: #4ba6c3;
-      color: #fff
-    }
+  #search.active{
+    border-bottom: solid white 2px;
+    width: 260px;
+  }
+
+#search-input {
+  height: 100%;
+  width: 0px;
+  font-size: 18px;
+  font-weight: 600;
+  background: none;
+  color: #FFF;
+  border: none;
+  outline: 0;
+  visibility: hidden;
+  transition: 0.5s linear;
+}
+
+  ::placeholder {
+    color: rgba(187, 187, 187, 0.377);
+  }
+
+#search-input.active {
+  width: 260px;
+  text-align: center;
+  visibility: visible;
+}
 
 .student-list{}
+
+/* selecting the first list item in student list */
+body > div.page > ul > li:nth-child(1) {
+  margin-top:13vh;
+}
 
   .student-item{
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
     border-bottom: 1px solid #eaeaea;
     position: relative;
-  top: 0;
-  transition: top ease 0.5s;
+    /* top and transition properties ease the student item up when hovered over
+    in concert with the the top property in the .student-item hover rule below*/
+    top: 0;
+    transition: top ease 0.5s;
   }
 
   .student-item:hover{
     background-color: rgba(243, 243, 243, 0.3);
+    cursor: grab;
     top: -10px;
   }
 

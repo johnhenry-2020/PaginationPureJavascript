@@ -1,24 +1,7 @@
+/* NOTE: There are additional style sheets at play so be
+sure to reference them during development and when refactoring */
 
     /* MOBILE RESPONSIVE RULES */
-
-
-/* ========================================== */
-/* header image - treehouse center logo */
-/* ========================================== */
-
-
-@media screen and (max-width: 900px) and (min-width: 631px) {
-  .page-header img {
-    height: 4vh;
-  }
-}
-
-/* On screens with a maximum width of 900px, sets the pagination div to center of page */
-@media screen and (max-width: 630px){
-  .page-header img {
-    display: none;
-  }
-}
 
 
     /*================================================================================

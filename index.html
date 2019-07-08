@@ -9,9 +9,12 @@
   <link rel="stylesheet" href="css/design.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<!-- <div id="wrapper"> -->
 
 <body>
+
+  <!-- Treehouse Logo -->
+  <img class="logo"
+    src="/Users/johnhenry/Desktop/techDegree/unit2/techdegree-project-2/static/treehouse-logo-landscape.png" alt="">
 
   <div id="cf">
     <img class="bottom" src="/Users/johnhenry/Desktop/techDegree/unit2/techdegree-project-2/static/bg3.jpeg" />
@@ -19,13 +22,21 @@
   </div>
 
   <div class="page">
-    <input type="text" class="student-search" placeholder="Search for students..">
     <div class="page-header cf">
-      <!-- Treehouse Logo dynamically inserted here -->
-      <h2>Treehouse TechDegree Students</h2>
-      <!-- dynamically insert search form here (optional) -->
-
+      <h2
+        onclick="javascript: window.location.href = 'file:///Users/johnhenry/Desktop/techDegree/unit2/techdegree-project-2/index.html';">
+        TechDegree Students</h2>
+      <!-- dynamically generate error messages here for users who's search results do not return value > 0 -->
+      <!-- dynamically inserting search form here -->
     </div>
+    <div id="search">
+      <form id="formInput">
+        <img src="static/search-icon.png" alt="white maginifying lens representing the search bar icon"
+          class="search-icon">
+        <input type="text" class="student-search" id="search-input" placeholder="Search" name="search">
+      </form>
+    </div>
+
     <ul class="student-list">
       <li class="student-item cf">
         <div class="student-details">
@@ -573,6 +584,5 @@
   </div>
   <script src="js/script.js"></script>
 </body>
-<!-- </div> -->
 
 </html>
