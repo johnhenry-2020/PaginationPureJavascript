@@ -107,14 +107,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
          // when the pagination links are clicked we are setting the "paglinks" variable up to obtain
          // access to the anchor tags that represent each pagination page holding a maximum of 10 studen objects per "page"
          link.addEventListener('click', (e) => {
-            // for (i = 0; i < maxNumPages.length; i++) {
-            // pagLinks[i].className = "";
-            if (e.target.classList != "active") {
-               e.target.style.backgroundColor = "#3d474f";
-            } else if (e.target.classList == "active") {
-               e.target.backgroundColor = "transparent";
+            // "pagLink" variable serves to gain access to all the program's anchor tags
+            const pagLink = document.getElementsByTagName('a');
+            // all anchor tags are cleared of the class so the active state is reset every time user clicks on a specific link
+            for (i = 0; i < maxNumPages; i++) {
+               pagLink[i].classList.remove("active");
                //anchor tag is clicked the class link's class is set to active
             }
+            e.target.className = "active";
+            // here we are calling the function so all the above code can be executed and manipulation of the DOM can proceed
             show10Students(entireStudentList, link.innerHTML);
          });
       }
@@ -213,8 +214,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // errorDiv.style.display = "";
          } else {
             eachStudentItem[i].style.display = 'none';
-            // errorDiv.innerHTML = errorDomString2;
-            // searchBar.appendChild(errorDiv.firstChild);
+            errorDiv.innerHTML = errorDomString2;
+            searchBar.appendChild(errorDiv.firstChild);
             // alert('no results found ');
          }
       }
@@ -224,6 +225,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       if (filter == "") {
          errorDiv.innerHTML = errorDomString1;
          searchBar.appendChild(errorDiv.firstChild);
+         // return errorDiv;
       }
       else {
          // REMOVE ERROR Message
