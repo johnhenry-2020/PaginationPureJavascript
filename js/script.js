@@ -92,7 +92,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
          // create the pagination anchor tags
          const link = document.createElement('a');
          // obtain access to the first list item in the unordered list
-         let pagLinks = document.querySelector('a');
          const firstLi = ul.firstChild;
          // set the the value of "a" to the value of that of the first anchor tag
          const a = firstLi.firstChild;
@@ -121,30 +120,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
    }
 
-
-
-
-
-
-
-
-
-
    // CALLING show10Students FUNCTION...
    show10Students(entireStudentList, 1);
    createPagLinks(entireStudentList);
-
-
-   /*========================
-      treehouse logo node...
-   ======================c===*/
-   // https://stackoverflow.com/questions/7932759/dom-appendchild-to-insert-images
-   //"header" variable provides access to h2 - STUDENTS header
-   // const page = document.querySelector(".page");
-   // const header = document.querySelector("h2");
-   // const logoImg = document.createElement('img');
-   // logoImg.src = "static/treehouse-logo-landscape.png";
-   // header.appendChild(logoImg, header);
 
 
 
@@ -185,8 +163,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
    });
 
 
-   let errorDomString1 = '<div class="error-message">Please do not forget to enter a name</div>';
-   let errorDomString2 = '<div class="noResults" style="color:rgb(158,3,3); line-height:150%; font-size:80%">SORRY WE DON\'T RECOGNIZE THIS STUDENT \n PLEASE TRY ANOTHER NAME</div > ';
+   let errorDomString1 = '<div>Please do not forget to enter a name</div>';
+   let errorDomString2 = '<div style="color:rgb(158,3,3); line-height:150%; font-size:80%">SORRY WE DON\'T RECOGNIZE THIS STUDENT \n PLEASE TRY ANOTHER NAME</div > ';
+   const errorDiv1 = document.createElement('div');
+   const errorDiv2 = document.createElement('div');
+
+   // // ==========================
+   // // WHEN USER INPUT IS MISSING
+   // // ==========================
+
+   const filter = document.querySelector("#search-input");
+   // const errorMessage = document.querySelector("#search > div > div");
+
+   errorDiv1.innerHTML = errorDomString1;
+   searchBar.append(errorDiv1);
+
+   errorDiv1.style.display = 'none';
+   // errorMessage.style.display = 'none';
+
+   // // =======================
+   // // USER INPUT IS NOT FOUND
+   // // =======================
+   errorDiv2.innerHTML = errorDomString2;
+   searchBar.append(errorDiv2);
+   //error message set to not display initially
+   // errorDiv2.style.display = 'none';
+   errorDiv2.firstChild.style.display = 'none';
+
 
 
    /*====================
@@ -196,8 +199,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       // Declare variables
       let filter, i, name, txtValue;
       filter = searchInput.value.toUpperCase();
-      const errorDiv = document.createElement('div');
       // const children = [];
+      // const remove = document.querySelector("#search > div.error-message > div");
 
       // Loop through all list items, and hide those who don't match the search query
       for (i = 0; i < eachStudentItem.length; i++) {
@@ -210,37 +213,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
          // $ if the value which in this case is the student's name than the code is executed
          // the following code toggles between the student's profile being displayed on DOM or not
          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            //when you get back a student's name...
             eachStudentItem[i].style.display = "";
-            // errorDiv.style.display = "";
-         } else {
+         }
+         else {
+            // when you get no return results...
             eachStudentItem[i].style.display = 'none';
-            errorDiv.innerHTML = errorDomString2;
-            searchBar.appendChild(errorDiv.firstChild);
-            // alert('no results found ');
          }
       }
-      // =====================
-      // USER INPUT IS MISSING
-      // =====================
-      if (filter == "") {
-         errorDiv.innerHTML = errorDomString1;
-         searchBar.appendChild(errorDiv.firstChild);
-         // return errorDiv;
-      }
-      else {
-         // REMOVE ERROR Message
-         const removeErrorString = document.querySelector("#search > div");
-         removeErrorString.style.display = 'none';
-         return errorDiv;
-      }
    }
+
 
    /*=====================================================
      SEARCH BAR INPUT CAPTURED HERE VIA RETURN/ENTER KEY...
    /*=====================================================*/
 
    // executing our desired function when the user releases a key (return || enter) on the keyboard
-   searchInput.addEventListener("keydown", (event) => {
+   searchInput.addEventListener("keydown", filterList, (event) => {
       // Number 13 is the "Enter" key on the keyboard
       if (event.keyCode === 13) {
          // Cancel the default action, if needed
@@ -248,10 +237,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
          // capture the value of the input and trigger that input to be logged to the console for testing purposes
          //run filter function after user clicks return/enter key =" keydown"
          filterList();
-         //if the user enters name after not entering a name than we remove the error message from DOM
-         // errorDiv.style.display = 'none';
+         // no user input
+         if (filter.value == "") {
+            //show the message requesting user input a name/string
+            errorDiv1.classList = 'error-message';
+         } else {
+            errorDiv1.classList = 'removedMessage';
+         }
       }
    });
+
+   searchInput.addEventListener("keyup", filterList, (event) => {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+         // Cancel the default action, if needed
+         event.preventDefault();
+         // capture the value of the input and trigger that input to be logged to the console for testing purposes
+         //run filter function after user clicks return/enter key =" keydown"
+         filterList();
+         // no user input
+         if (filter.value == "") {
+            //show the message requesting user input a name/string
+            errorDiv1.classList = 'error-message';
+         } else {
+            errorDiv1.classList = 'removedMessage';
+         }
+      }
+   });
+
 
 
    /*====================

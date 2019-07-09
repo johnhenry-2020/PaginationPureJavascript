@@ -145,7 +145,8 @@ form {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   position: absolute;
-  top: -5vh;
+  top: -3vh;
+  left: 0px;
 }
 
 .requestName{
@@ -155,8 +156,8 @@ form {
 }
 
 
-.removed-message {
-  display: none;
+.removedMessage {
+  display: none !important;
 }
 
 
