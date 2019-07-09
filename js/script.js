@@ -152,7 +152,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
          active = false;
       }
    });
-
+   //allow user to hit escape/back key to exit out of the search bar
    searchInput.addEventListener('keydown', (event) => {
       if (event.keyCode === 27) {
          searchBar.classList.remove('active');
@@ -161,34 +161,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
          active = false;
       }
    });
-
-
-   let errorDomString1 = '<div>Please do not forget to enter a name</div>';
-   let errorDomString2 = '<div style="color:rgb(158,3,3); line-height:150%; font-size:80%">SORRY WE DON\'T RECOGNIZE THIS STUDENT \n PLEASE TRY ANOTHER NAME</div > ';
-   const errorDiv1 = document.createElement('div');
-   const errorDiv2 = document.createElement('div');
-
-   // // ==========================
-   // // WHEN USER INPUT IS MISSING
-   // // ==========================
-
-   const filter = document.querySelector("#search-input");
-   // const errorMessage = document.querySelector("#search > div > div");
-
-   errorDiv1.innerHTML = errorDomString1;
-   searchBar.append(errorDiv1);
-
-   errorDiv1.style.display = 'none';
-   // errorMessage.style.display = 'none';
-
-   // // =======================
-   // // USER INPUT IS NOT FOUND
-   // // =======================
-   errorDiv2.innerHTML = errorDomString2;
-   searchBar.append(errorDiv2);
-   //error message set to not display initially
-   // errorDiv2.style.display = 'none';
-   errorDiv2.firstChild.style.display = 'none';
 
 
 
@@ -225,45 +197,85 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 
    /*=====================================================
-     SEARCH BAR INPUT CAPTURED HERE VIA RETURN/ENTER KEY...
+     SEARCH BAR INPUT AUTO DETECTED...
    /*=====================================================*/
+   searchInput.addEventListener("keyup", filterList, (event));
 
-   // executing our desired function when the user releases a key (return || enter) on the keyboard
-   searchInput.addEventListener("keydown", filterList, (event) => {
-      // Number 13 is the "Enter" key on the keyboard
-      if (event.keyCode === 13) {
-         // Cancel the default action, if needed
-         event.preventDefault();
-         // capture the value of the input and trigger that input to be logged to the console for testing purposes
-         //run filter function after user clicks return/enter key =" keydown"
-         filterList();
-         // no user input
-         if (filter.value == "") {
-            //show the message requesting user input a name/string
-            errorDiv1.classList = 'error-message';
-         } else {
-            errorDiv1.classList = 'removedMessage';
-         }
-      }
-   });
 
-   searchInput.addEventListener("keyup", filterList, (event) => {
-      // Number 13 is the "Enter" key on the keyboard
-      if (event.keyCode === 13) {
-         // Cancel the default action, if needed
-         event.preventDefault();
-         // capture the value of the input and trigger that input to be logged to the console for testing purposes
-         //run filter function after user clicks return/enter key =" keydown"
-         filterList();
-         // no user input
-         if (filter.value == "") {
-            //show the message requesting user input a name/string
-            errorDiv1.classList = 'error-message';
-         } else {
-            errorDiv1.classList = 'removedMessage';
-         }
-      }
-   });
+   // let errorDomString2 = '<div style="color:rgb(158,3,3); line-height:150%; font-size:80%">SORRY WE DON\'T RECOGNIZE THIS STUDENT \n PLEASE TRY ANOTHER NAME</div > ';
+   // const errorDiv2 = document.createElement('div');
+
+   // // // ==========================
+   // // // WHEN USER INPUT IS MISSING
+   // // // ==========================
+
+   // const filter = document.querySelector("#search-input");
+   // // const errorMessage = document.querySelector("#search > div > div");
+
+   // errorDiv1.innerHTML = errorDomString1;
+   // searchBar.append(errorDiv1);
+
+   // errorDiv1.style.display = 'none';
+   // // errorMessage.style.display = 'none';
+
+   // // // =======================
+   // // // USER INPUT IS NOT FOUND
+   // // // =======================
+   // errorDiv2.innerHTML = errorDomString2;
+   // searchBar.append(errorDiv2);
+   // //error message set to not display initially
+   // // errorDiv2.style.display = 'none';
+   // errorDiv2.firstChild.style.display = 'none';
+
+
+
+
+   // ERROR MESSAGES!!!!!!
+   // let filter, name, txtValue;
+   // filter = searchInput.value.toUpperCase();
+   // const errorDiv1 = document.createElement('div');
+   // const errorDomString1 = '<div>Please do not forget to enter a name</div>';
+   // errorDiv1.innerHTML = errorDomString1;
+   // searchBar.append(errorDiv1);
+   // errorDiv1.style.display = 'none';
+   // const removeDiv = document.querySelector("#search > div > div");
+
+   // searchInput.addEventListener("keydown", (event) => {
+   //    // Number 13 is the "Enter" key on the keyboard
+   //    if (event.keyCode === 13) {
+   //       event.preventDefault();
+
+   //       for (i = 0; i < eachStudentItem.length; i++) {
+   //          name = eachStudentItem[i].getElementsByTagName("h3")[0];
+   //          txtValue = name.textContent || eachStudentItem.innerText;
+   //       }
+   //       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+   //          //when you get back a student's name...
+   //          removeDiv.classList = "error-message";
+   //          removeDiv.style.display = 'block';
+   //          console.log('it\'s working')
+   //       }
+   //       else {
+   //          // when you get no return results...
+   //          // errorDiv1.classList = 'removedMessage';
+   //          removeDiv.style.display = 'none';
+   //          console.log('nothing is working')
+   //       }
+   //    }
+   // });
+
+
+   // no user input
+   // if (filter.value == "") {
+   //    //show the message requesting user input a name/string
+   //    errorDiv1.classList = 'error-message';
+   // } else {
+   //    errorDiv1.classList = 'removedMessage';
+   // }
+
+
+
+
 
 
 
