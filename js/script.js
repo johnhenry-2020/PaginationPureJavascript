@@ -91,10 +91,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
          ul.appendChild(li);
          // create the pagination anchor tags
          const link = document.createElement('a');
-         // obtain access to the first list item in the unordered list
-         const firstLi = ul.firstChild;
-         // set the the value of "a" to the value of that of the first anchor tag
-         const a = firstLi.firstChild;
          // // give pagination link's class the class name of "active"
          // firstLi.setAttribute("className", "active");
          //anchor tags become part of each list item
@@ -105,10 +101,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
          link.innerHTML = i + 1;
          // when the pagination links are clicked we are setting the "paglinks" variable up to obtain
          // access to the anchor tags that represent each pagination page holding a maximum of 10 studen objects per "page"
+         let firstA = document.querySelector("body > div.page > ul > div > ul > li:nth-child(1) > a");
+         firstA.className = 'active';
          link.addEventListener('click', (e) => {
             // "pagLink" variable serves to gain access to all the program's anchor tags
             const pagLink = document.getElementsByTagName('a');
-            // all anchor tags are cleared of the class so the active state is reset every time user clicks on a specific link
+            // all anchor tags are cleared of the "active" class so the active state is reset every time user clicks on a specific link
             for (i = 0; i < maxNumPages; i++) {
                pagLink[i].classList.remove("active");
                //anchor tag is clicked the class link's class is set to active
